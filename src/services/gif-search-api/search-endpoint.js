@@ -1,0 +1,1 @@
+export const searchEndpoint = (searchParam) => `https://api.gfycat.com/v1/gfycats/search?search_text=${searchParam}`;

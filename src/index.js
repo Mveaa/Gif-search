@@ -1,19 +1,21 @@
-import _ from 'lodash';
-import printMe from './print.js';
+import axios from "axios";
+import {elementFactory} from "./factory/element-factory";
+import {searchEndpoint} from "./services/gif-search-api/search-endpoint";
 
-function component() {
-	let element = document.createElement('div');
-	var btn = document.createElement('button');
+function init() {
+	const root = elementFactory("section");
+    const input = elementFactory("input");
+
+    document.addEventListener("keyup", () => {
+		const searchParam = searchEndpoint(input.value);
+
+        axios.get(searchParam)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
+    });
 
 
-	element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-	btn.innerHTML = 'Click me and check the console!';
-	btn.onclick = printMe;
-
-	element.appendChild(btn);
-	
-	return element;
+    root.appendChild(input);
+    document.body.appendChild(root)
 }
-
-document.body.appendChild(component());
+init();
