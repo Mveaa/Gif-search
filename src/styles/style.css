@@ -1,0 +1,9 @@
+.results-container {
+    background-color: aqua;
+}
+
+.results-container img {
+    display: block;
+    margin: 10px auto;
+    max-width: 300px;
+}

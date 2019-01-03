@@ -3,11 +3,15 @@ import {elementFactory} from "./factory/element-factory";
 import {searchEndpoint} from "./services/gif-search-api/search-endpoint";
 import {generateImagesFromGifs} from "./template/generate-images-from-gifs";
 import {appendImageNodesToContainer} from "./template/append-image-nodes-to-container"
+import "./styles/style.css";
+import {addCssClass} from "./services/add-class.service";
 
 function init() {
     const root = elementFactory("section");
     const resultsContainer = elementFactory("div");
     const input = elementFactory("input");
+
+    addCssClass(resultsContainer, "results-container");
 
     document.addEventListener("keyup", function() {
         const searchParam = searchEndpoint(input.value);
